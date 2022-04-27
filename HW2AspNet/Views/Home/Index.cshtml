@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Car>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<a href='@Url.Action("AddCar","Home")'>Add Car</a>
+<ul style="list-style-type:none">
+@if (@Model!=null)
+@for(int i = 0; i < @Model.Count; i++)
+{
+    <li style="font-size:120%;" ><p>Name: @Model[i].Name</p> <p>Model: @Model[i].Model</p>   <p>Description: @Model[i].Description</p>  <a href='@Url.Action("DeleteCar","Home",new {id=@Model[i].Id})'>Delete</a>
+</li> 
+<br/>
+
+}
+</ul>
